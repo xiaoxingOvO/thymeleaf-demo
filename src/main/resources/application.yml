@@ -1,0 +1,39 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /thymeleaf-demo
+
+# spring相关配置 datasource数据源  thymeleaf 模板引擎
+spring:
+  profiles:
+    active: dev
+  application:
+    name: thymeleaf-demo
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+  web:
+    resources:
+      static-locations: classpath:/static/,file:${photo.file.dir} #暴露哪些资源可以通过项目名访问
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+
+# 日志配置
+logging:
+  level:
+    root: info
+    com.baizhi: debug
+
+# 指定文件上传位置
+photo:
+  file:
+    dir: /Users/xiaoxing/projects/thymeleaf-demo/photos
+
